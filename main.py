@@ -36,4 +36,9 @@ def mine():
 
 
 def main():
-    for
+    pass
+
+
+if __name__ == "__main__":
+    main()
+
