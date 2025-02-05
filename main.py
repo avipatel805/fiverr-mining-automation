@@ -12,8 +12,12 @@ def spider(count):
 
     spider_loc = None
     for _ in range(100):
-        spider_loc = pg.locateOnScreen('spider.jpg', confidence=0.7)
-        time.sleep(0.01)
+        try:
+            spider_loc = pg.locateOnScreen('spider.jpg', confidence=0.7)
+            time.sleep(0.01)
+        except pg.ImageNotFoundException:
+            time.sleep(0.01)
+            continue
     if spider_loc is not None:
         for _ in range(6):
             pg.press('right')
@@ -41,15 +45,23 @@ def mine():
 
     spider_loc = None
     for _ in range(100):
-        spider_loc = pg.locateOnScreen('spider.jpg', confidence=0.7)
-        time.sleep(0.01)
+        try:
+            spider_loc = pg.locateOnScreen('spider.jpg', confidence=0.7)
+            time.sleep(0.01)
+        except pg.ImageNotFoundException:
+            time.sleep(0.01)
+            continue
     if spider_loc is not None:
         spider()
 
     mine_loc = None
     for _ in range(100):
-        mine_loc = pg.locateOnScreen('fire.png', confidence=0.7)
-        time.sleep(0.01)
+        try:
+            mine_loc = pg.locateOnScreen('fire.png', confidence=0.7)
+            time.sleep(0.01)
+        except pg.ImageNotFoundException:
+            time.sleep(0.01)
+            continue
 
     if mine_loc is not None:
         mine_collapse()
