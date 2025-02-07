@@ -2,10 +2,15 @@ import pyautogui as pg
 import time
 
 
+def press(key, duration=0.1):
+    with pg.hold(key):
+        time.sleep(duration)
+
+
 def spider(count):
-    pg.typewrite('x')
+    press('x')
     time.sleep(0.01)
-    pg.typewrite('x')
+    press('x')
     for _ in range(6):
         pg.press('right')
         time.sleep(0.08)
@@ -22,17 +27,15 @@ def spider(count):
         for _ in range(6):
             pg.press('right')
             time.sleep(0.08)
-        pg.typewrite('z')
+        press('z')
         time.sleep(0.01)
-        pg.typewrite('z')
+        press('z')
 
 
 def mine_collapse():
-    with pg.hold('down'):
-        time.sleep(3)
+    press('down', 3)
     time.sleep(0.07)
-    with pg.hold('up'):
-        time.sleep(0.5)
+    press('up', 0.5)
     with pg.hold('up') and pg.hold('left'):
         time.sleep(0.7)
 
@@ -67,8 +70,7 @@ def mine():
         mine_collapse()
         return False
 
-    with pg.hold('up'):
-        time.sleep(0.07)
+    press('up', 0.07)
     return True
 
 
@@ -79,8 +81,7 @@ def main():
             counter += 1
         else:
             counter = 0
-    with pg.hold('down'):
-        time.sleep(2.5)
+    press('down', 2.5)
     main()
 
 
